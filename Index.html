@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Techno App Test</title>
+<style>
+body {
+  background: black;
+  color: #0f0;
+  font-family: monospace;
+  text-align: center;
+  padding-top: 50px;
+}
+button {
+  font-size: 24px;
+  padding: 20px;
+  background: #111;
+  color: #0f0;
+  border: 2px solid #0f0;
+}
+</style>
+</head>
+<body>
+
+<h1>ACID TEST</h1>
+<button id="start">START SOUND</button>
+
+<script>
+let ctx;
+document.getElementById("start").onclick = () => {
+  ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const osc = ctx.createOscillator();
+  osc.type = "sawtooth";
+  osc.frequency.value = 110;
+  osc.connect(ctx.destination);
+  osc.start();
+};
+</script>
+
+</body>
+</html>
